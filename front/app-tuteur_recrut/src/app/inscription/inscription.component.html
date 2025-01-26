@@ -1,0 +1,37 @@
+<body>
+    <div id="form">
+      <fieldset>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    
+          <input id="name" formControlName="name" placeholder="Nom"/>
+          <div *ngIf="registrationForm.get('name').invalid && registrationForm.get('name').touched">
+            Le nom est requis.
+          </div>
+          <br><br>
+          <input id="lastname" formControlName="lastname" placeholder="Prenom"/>
+          <div *ngIf="registrationForm.get('lastname').invalid && registrationForm.get('lastname').touched">
+            Le prenom est requis.
+          </div>
+          <br><br>
+          <input id="username" formControlName="username"placeholder="Nom d'utilisateur" />
+          <div *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">
+            Le nom d'utilisateur est requis.
+          </div>
+          <br><br>
+          <input id="email" formControlName="email" placeholder="Adresse Email"/>
+          <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
+            Entrez une adresse email valide.
+          </div>
+          <br><br>
+          <input id="password" type="password" formControlName="password" placeholder="Mot de passe"/>
+          <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
+            Le mot de passe doit contenir au moins 6 caractères.
+          </div>
+          <br><br>
+          <button type="submit" [disabled]="registrationForm.invalid">S'inscrire</button>
+        </form>
+      </fieldset>
+    </div>
+    </body>
+    
+    
