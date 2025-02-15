@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* Supprimer la marge et le padding par défaut du body et html */
-/* Supprimer la marge et le padding par défaut du body et html */
 * {
     margin: 0;
     padding: 0;
@@ -13,10 +12,10 @@
     display: flex;
     justify-content: space-around;
     background-color: #f0f0f0;
-    /* padding: 10px; */
     width: 100%;
-    box-sizing: border-box; /* Ajoutez cette ligne pour inclure le padding dans la largeur */
-    margin: 0; /* Supprimez les marges */
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+    margin: 0; /* Supprimer les marges */
+    box-shadow: 0 4px 2px -2px rgb(210, 210, 210); /* Ajouter une ombre sous le menu */
 }
 
 .menu button {
