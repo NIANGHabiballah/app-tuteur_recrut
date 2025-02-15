@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Supprimer la marge et le padding par défaut du body et html */
+/* Supprimer la marge et le padding par défaut du body et html */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    /* padding: 10px; */
+    width: 100%;
+    box-sizing: border-box; /* Ajoutez cette ligne pour inclure le padding dans la largeur */
+    margin: 0; /* Supprimez les marges */
+}
+
+.menu button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.menu button:hover {
+    background-color: #28a745;
+}
+
+.menu button.active {
+    background-color: #28a745;
+}
+
+.menu button a {
+    color: white;
+    text-decoration: none;
+}
