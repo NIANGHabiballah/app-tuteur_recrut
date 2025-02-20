@@ -1,0 +1,130 @@
+* {
+    margin: 10;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.title-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.main-title {
+    color: green;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.example-card {
+    max-width: 300px;
+    max-height: 400px;
+    border-radius: 3%;
+    border-color: rgb(219, 219, 219);
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    flex: 1 1 calc(33.333% - 20px);
+  }
+
+  .example-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    border-radius: 5px;
+    margin-inline: 90px;
+    
+}
+
+.example-card:hover {
+    transform: scale(1.05);
+    /* width: 100%;
+    height: 100%; */
+}
+.card-container .example-card {
+    padding: 10px;
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.example-header-image {
+    background-size: cover;
+  }
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    /* color:red ; */
+}
+
+mat-card img {
+    width: 100%;
+    height: 100%;/* Ajustez la hauteur selon vos besoins */
+    object-fit: cover;
+  }
+
+  .banner {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  
+/* Styles pour les boutons */
+button {
+    border-radius: 20px; /* Ajoute un border-radius de 5px à tous les boutons */
+}
+.postuler-button {
+    color: green !important;
+    transition: background-color 0.3s ease;
+}
+
+.postuler-button:hover {
+    background-color: green; /* Couleur de fond au survol */
+    color: white !important;
+
+}
+
+.details-button {
+    color: #007BFF !important;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+    background-color: #007BFF; /* Couleur de fond au survol */
+    color: white !important;
+
+}
+
+
+.no-postes-button {
+    color: red !important;
+    transition: background-color 0.3s ease;
+}
+
+.no-postes-button:hover {
+    /* Couleur de fond au survol */
+}

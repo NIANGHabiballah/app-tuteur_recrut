@@ -14,8 +14,11 @@
     background-color: #f0f0f0;
     width: 100%;
     box-sizing: border-box; /* Inclure le padding dans la largeur */
-    margin: 0; /* Supprimer les marges */
+    margin-bottom: 10px !important; /* Supprimer les marges */
     box-shadow: 0 4px 2px -2px rgb(210, 210, 210); /* Ajouter une ombre sous le menu */
+    position: fixed; /* Fixer le menu en haut */
+    top: 0; /* Positionner en haut */
+    z-index: 1000; /* Assurer que le menu reste au-dessus des autres éléments */
 }
 
 .menu button {
