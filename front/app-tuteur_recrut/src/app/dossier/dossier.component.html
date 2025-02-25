@@ -1,0 +1,156 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBIm_QuG3bhgOgxQ0aKWm5kMCJPP0bB6LVQ&s"
+           alt="Logo" width="200" height="70" class="d-inline-block align-top">
+    </a>
+
+    <!-- Bouton du menu en mode mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Liens de navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto"> <!-- ms-auto pousse les liens à droite -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/accueil">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/candidature">Candidature</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dossier">Dossier</a>
+        </li>
+      </ul>
+
+      <!-- Bouton Se Déconnecter -->
+      <button class="btn btn-danger ms-3" routerLink="/accueil">Se Déconnecter</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+  <h2 class="fw-bold">Mon dossier personnel</h2>
+
+  <div class="accordion mt-3" id="dossierAccordion">
+    <!-- Informations Personnelles -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#infosPerso">
+          Mes informations personnelles
+        </button>
+      </h2>
+      <div id="infosPerso" class="accordion-collapse collapse show" data-bs-parent="#dossierAccordion">
+        <div class="accordion-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Prénom</label>
+              <input type="text" class="form-control" [(ngModel)]="prenom" name="prenom">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-control" [(ngModel)]="nom" name="nom">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Genre</label>
+              <select class="form-select" [(ngModel)]="genre" name="genre">
+                <option>Homme</option>
+                <option>Femme</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Numéro Téléphone</label>
+              <input type="tel" class="form-control" [(ngModel)]="tel" name="tel">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" [(ngModel)]="email" name="email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nationalité</label>
+              <input type="text" class="form-control" [(ngModel)]="nationalite" name="nationalite">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Pays de résidence</label>
+              <input type="text" class="form-control" [(ngModel)]="pays" name="pays">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Ville de résidence</label>
+              <input type="text" class="form-control" [(ngModel)]="ville" name="ville">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formations Académiques -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#formationPanel">
+          Formations académiques
+        </button>
+      </h2>
+      <div id="formationPanel" class="accordion-collapse collapse" data-bs-parent="#dossierAccordion">
+        <div class="accordion-body text-center">
+          <p class="text-muted">Aucune formation renseignée!</p>
+          <button class="btn btn-primary">
+            <i class="bi bi-plus"></i> Ajouter une formation
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expériences Professionnelles -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#experience">
+          Expériences Professionnelles
+        </button>
+      </h2>
+      <div id="experience" class="accordion-collapse collapse" data-bs-parent="#dossierAccordion">
+        <div class="accordion-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Poste</label>
+              <input type="text" class="form-control" [(ngModel)]="poste" name="poste">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Université</label>
+              <select class="form-select" [(ngModel)]="ecole" name="ecole">
+                <option>UNCHK</option>
+                <option>UCAD</option>
+                <option>UGB</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mes Documents -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#documents">
+          Mes documents
+        </button>
+      </h2>
+      <div id="documents" class="accordion-collapse collapse" data-bs-parent="#dossierAccordion">
+        <div class="accordion-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Ajouter un document</label>
+              <input type="file" class="form-control" (change)="onFileSelected($event)">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
