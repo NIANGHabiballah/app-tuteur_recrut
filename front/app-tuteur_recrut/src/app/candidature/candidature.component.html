@@ -1,0 +1,168 @@
+<!-- MENU NAVIGATION -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBIm_QuG3bhgOgxQ0aKWm5kMCJPP0bB6LVQ&s"
+           alt="Logo" width="200" height="70" class="d-inline-block align-top">
+    </a>
+
+    <!-- Bouton du menu en mode mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Liens de navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto"> <!-- ms-auto pousse les liens à droite -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/candidature">Candidature</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dossier">Dossier</a>
+        </li>
+      </ul>
+
+      <!-- Bouton Se Déconnecter -->
+      <button class="btn btn-danger ms-3" routerLink="/accueil">Se Déconnecter</button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- FORMULAIRE DE CANDIDATURE -->
+<div class="container mt-5">
+  <fieldset class="bg-light">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+  <h2 class="text-center mb-4">Formulaire de Candidature</h2>
+
+  <form [formGroup]="candidatureForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <!-- Prénom -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Prénom</label>
+        <input type="text" class="form-control" formControlName="prenom" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['prenom'].invalid && candidatureForm.controls['prenom'].touched">
+          ⚠ Le prénom est obligatoire.
+        </small>
+      </div>
+
+
+      <!-- Nom -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nom</label>
+        <input type="text" class="form-control" formControlName="nom" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['nom'].invalid && candidatureForm.controls['nom'].touched">
+          ⚠ Le nom est obligatoire.
+        </small>
+      </div>
+
+      <!-- Date de naissance -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Date de naissance</label>
+        <input type="date" class="form-control" formControlName="dateNaissance" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['dateNaissance'].invalid && candidatureForm.controls['dateNaissance'].touched">
+          ⚠ La date de naissance est requise.
+        </small>
+      </div>
+
+      <!-- Lieu de naissance -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Lieu de naissance</label>
+        <input type="text" class="form-control" formControlName="lieuNaissance" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['lieuNaissance'].invalid && candidatureForm.controls['lieuNaissance'].touched">
+          ⚠ Le lieu de naissance est requis.
+        </small>
+      </div>
+
+      <!-- Nationalité -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nationalité</label>
+        <input type="text" class="form-control" formControlName="nationalite" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['nationalite'].invalid && candidatureForm.controls['nationalite'].touched">
+          ⚠ La nationalité est requise.
+        </small>
+      </div>
+
+      <!-- Pays de résidence -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Pays de résidence</label>
+        <input type="text" class="form-control" formControlName="paysResidence" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['paysResidence'].invalid && candidatureForm.controls['paysResidence'].touched">
+          ⚠ Le pays de résidence est requis.
+        </small>
+      </div>
+
+      <!-- Expérience -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Années d'expérience</label>
+        <input type="number" class="form-control" formControlName="experience" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['experience'].invalid && candidatureForm.controls['experience'].touched">
+          ⚠ Entrez une expérience valide.
+        </small>
+      </div>
+
+      <!-- Email -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['email'].invalid && candidatureForm.controls['email'].touched">
+          ⚠ Email invalide.
+        </small>
+      </div>
+
+      <!-- Téléphone -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Téléphone</label>
+        <input type="text" class="form-control" formControlName="telephone" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['telephone'].invalid && candidatureForm.controls['telephone'].touched">
+          ⚠ Entrez un numéro valide (10 chiffres).
+        </small>
+      </div>
+
+      <!-- CV -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">CV</label>
+        <input type="file" class="form-control" (change)="onFileChange($event, 'cv')" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['cv'].invalid && candidatureForm.controls['cv'].touched">
+          ⚠ Joindre un CV est obligatoire.
+        </small>
+      </div>
+
+      <!-- Diplôme -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Diplôme</label>
+        <input type="file" class="form-control" (change)="onFileChange($event, 'diplome')" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['diplome'].invalid && candidatureForm.controls['diplome'].touched">
+          ⚠ Joindre un diplôme est obligatoire.
+        </small>
+      </div>
+
+      <!-- Lettre de motivation -->
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Lettre de motivation</label>
+        <input type="file" class="form-control" (change)="onFileChange($event, 'lettreMotivation')" />
+        <small class="text-danger" *ngIf="candidatureForm.controls['lettreMotivation'].invalid && candidatureForm.controls['lettreMotivation'].touched">
+          ⚠ Joindre une lettre de motivation est obligatoire.
+        </small>
+      </div>
+
+      <!-- Bouton Envoyer -->
+      <div class="col-12 d-grid">
+        <button type="submit" class="btn btn-success w-100 center" [disabled]="candidatureForm.invalid">Envoyer</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Message de confirmation -->
+  <div *ngIf="submitted" class="alert alert-success mt-3 text-center">
+    ✅ Candidature envoyée avec succès !
+  </div>
+  </div>
+  </div>
+  </fieldset>
+</div>
