@@ -78,7 +78,6 @@ export class PostulerComponent implements OnInit {
     this.formations.removeAt(index);
   }
 
-
   // Récupérer le tableau des expériences
   get experiences() {
     return this.postulerForm.get('experiences') as FormArray;
@@ -121,6 +120,7 @@ export class PostulerComponent implements OnInit {
       document.body.removeChild(a);
     }
   }
+
 
   suivant(): void {
     if (this.step < 5) this.step++;

@@ -5,8 +5,6 @@ import {NgIf} from '@angular/common';
 @Component({
   selector: 'app-offre-details',
   imports: [
-    NgIf,
-    RouterLink
   ],
   templateUrl: './offre-details.component.html',
   styleUrl: './offre-details.component.css'
@@ -15,9 +13,9 @@ export class OffreDetailsComponent {
 
   offre: any;
   offres = [
-    { id: 1, titre: 'Enseignant chercheur en Droit public', niveau: 'Doctorat', specialite: 'Sciences Juridiques', dateCloture: '15/06/2023', description: 'Description du poste en Droit public...' },
-    { id: 2, titre: 'Enseignant chercheur en Géographie', niveau: 'Doctorat', specialite: 'Sciences Politiques', dateCloture: '15/06/2023', description: 'Description du poste en Géographie...' },
-    { id: 3, titre: 'Enseignant chercheur en Finance-Comptabilité', niveau: 'Doctorat', specialite: 'Sciences de Gestion', dateCloture: '15/06/2023', description: 'Description du poste en Finance...' }
+    { id: 1, titre: 'Enseignant chercheur enAlgorithme Distibués', niveau: 'Doctorat', specialite: 'Algorithme', dateCloture: '30/03/2025', description: 'Description du poste...' },
+    { id: 2, titre: 'Enseignant chercheur en Ingénierie Logicielle', niveau: 'Doctorat', specialite: 'Informatique développement logiciel', dateCloture: '30/03/2025', description: 'Description du poste...' },
+    { id: 3, titre: 'Enseignant chercheur en Intelligence Artificielle', niveau: 'Doctorat', specialite: 'IA', dateCloture: '30/03/2025', description: 'Description du poste...' }
   ];
   offreId: any[] | string | UrlTree | null | undefined;
 

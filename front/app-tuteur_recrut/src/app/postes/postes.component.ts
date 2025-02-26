@@ -17,7 +17,6 @@ export class PostesComponent implements OnInit{
   postes = [
     {
       titre: 'Enseignant chercheur en Algorithme Distibués',
-
       niveau: 'Doctorat',
       specialite: 'Algorithme',
       dateCloture: '30/03/2025'
