@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
@@ -11,10 +11,17 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink]
 })
-export class InscriptionComponent {
-  registerForm: FormGroup;
+export class InscriptionComponent implements OnInit {
+  registerForm!: FormGroup;
+  errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
     this.registerForm = this.fb.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
@@ -23,19 +30,24 @@ export class InscriptionComponent {
     });
   }
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      this.authService.inscription(this.registerForm.value).subscribe(
-        response => {
-          console.log('Inscription réussie', response);
-          alert('Inscription réussie !');
-          this.router.navigate(['/connexion']);
-        },
-        error => {
-          console.error('Erreur lors de l\'inscription', error);
-          alert('Erreur lors de l\'inscription.');
-        }
-      );
+  inscription() {
+    if (this.registerForm.invalid) {
+      return;
     }
 
-}}
+    this.authService.inscription(this.registerForm.value).subscribe(
+      () => {
+        alert('Inscription réussie ! Vous allez être redirigé vers la page de connexion.');
+        this.router.navigate(['/connexion']); // Rediriger vers la page de connexion
+      },
+      (error) => {
+        this.errorMessage = 'Erreur lors de l’inscription. Veuillez réessayer.';
+        console.error('Erreur:', error);
+      }
+    );
+  }
+
+  onSubmit() {
+
+  }
+}

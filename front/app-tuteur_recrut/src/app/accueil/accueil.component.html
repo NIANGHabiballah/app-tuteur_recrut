@@ -1,47 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recrutement de Tuteurs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand" href="#">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBIm_QuG3bhgOgxQ0aKWm5kMCJPP0bB6LVQ&s"
-           alt="Logo" width="200" height="70" class="d-inline-block align-top">    </a>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBIm_QuG3bhgOgxQ0aKWm5kMCJPP0bB6LVQ&s" alt="Logo"
+        width="200" height="70" class="d-inline-block align-top rounded" style="border-radius: 15px;"> </a>
 
     <!-- Bouton du menu en mode mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon text-primary"></span>
     </button>
 
     <!-- Liens de navigation -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto"> <!-- ms-auto pousse les liens à droite -->
         <li class="nav-item">
-          <a class="nav-link" href="#">Accueil</a>
+          <a class="nav-link text-primary" routerLink="/accueil">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/candidature">Candidature</a>
+          <a class="nav-link text-primary" routerLink="/candidature">Candidature</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dossier">Dossier</a>
+          <a class="nav-link text-primary" routerLink="/dossier">Dossier</a>
         </li>
       </ul>
-
+      <!-- Bouton Se Déconnecter -->
+      <button class="btn btn-danger ms-3" routerLink="/accueil">Se Déconnecter</button>
     </div>
   </div>
 </nav>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-6 col-md-8 p-4">
-      <div class="card border-0 shadow-lg pt-5 my-5 position-relative">
-        <div class="card-body p-4">
 
-          <div class="card-text pt-3 text-center">
-            <div class="mb-3 text-center">ESPACE DE RECRUTEMENT</div>
-            <h3 class="member-name mb-0 text-center text-primary font-weight-bold">TUTEURS</h3>
-            <h3 class="member-name mb-0 text-center text-primary font-weight-bold">&nbsp;</h3>
-          </div>
-        </div>
+<section class=" bg-white text-center py-5 text-white">
+  <h2 class="display-4 text-primary">Rejoignez l'UNCHK</h2>
+  <p class="lead text-success">Aidez les étudiants à réussir tout en développant votre carrière.</p>
+  <a routerLink="/postes" class="btn btn-light btn-lg mt-3 bg-success text-white">Voir les postes</a>
+</section>
+
+<section id="services" class="py-5 container text-center bg-white">
+  <h3 class="mb-4">Pourquoi nous rejoindre ?</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h4>Flexibilité</h4>
+        <p>Travaillez selon votre propre emploi du temps.</p>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h4>Rémunération attractive</h4>
+        <p>Recevez une rémunération compétitive pour votre expertise.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h4>Impact</h4>
+        <p>Aidez les étudiants à atteindre leurs objectifs académiques.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </div><!--//row-->
-</div>
+
+
+<footer class="bg-light text-white text-center py-3">
+  <p>&copy; 2025 Tuteurs UNCHK. Tous droits réservés.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

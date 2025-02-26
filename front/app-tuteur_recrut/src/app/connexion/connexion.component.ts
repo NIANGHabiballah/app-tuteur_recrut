@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
+  styleUrls: ['./connexion.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule] // 🔥 Ajout de ReactiveFormsModule ici
+    imports: [CommonModule, ReactiveFormsModule, RouterLink] // 🔥 Ajout de ReactiveFormsModule ici
 })
 export class ConnexionComponent {
   loginForm: FormGroup;
