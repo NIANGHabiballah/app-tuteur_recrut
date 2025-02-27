@@ -18,4 +18,8 @@ public class User {
     private String nom;
     private String email;
     private String motDePasse;
+
+    public boolean isPresent() {
+        return false;
+    }
 }
