@@ -1,32 +1,31 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ReactiveFormsModule, FormBuilder, FormControl, FormGroup, FormsModule, Validators} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {merge} from 'rxjs';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import {Router, RouterLink, RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { NavigationComponent } from "../Pages/navigation/navigation.component";
 
 @Component({
   selector: 'app-connexion',
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, CommonModule, ReactiveFormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './connexion.component.html',
-  styleUrl: './connexion.component.css'
+  styleUrls: ['./connexion.component.css'],
+  standalone: true,
+    imports: [CommonModule, ReactiveFormsModule, RouterLink, NavigationComponent] // 🔥 Ajout de ReactiveFormsModule ici
+ // 🔥 Ajout de ReactiveFormsModule ici
 })
 export class ConnexionComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      motDePasse: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form Data:', this.loginForm.value);
+      console.log('Formulaire soumis', this.loginForm.value);
     }
   }
 }

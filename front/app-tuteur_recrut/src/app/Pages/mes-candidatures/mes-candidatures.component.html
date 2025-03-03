@@ -1,8 +1,31 @@
-<app-navigation></app-navigation>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <app-navigation></app-navigation>
 <div>
   <router-outlet></router-outlet>
 </div>
 
-<p>mes-candidatures works!</p>
+<div class="container mt-4">
+  <h4 class="text-primary">Liste de mes candidatures</h4>
+  <div class="card p-3 shadow-sm">
+    <div class="card-body">
+      <span class="badge bg-success text-white">Recrutement de personnel d'enseignement et de recherche</span>
+      <h5 class="mt-3"><strong>Intitulé du poste:</strong> Enseignant chercheur en Géographie</h5>
+      <p><strong>Date de clôture : </strong> <span class="badge bg-dark">25/04/2023</span></p>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-primary">Etat</button>
+        <button class="btn btn-outline-warning border-2" routerLink="/postuler">Modifier ma candidature</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<app-footer></app-footer>
+<app-footer class="footermy"></app-footer>
+</body>
+</html>

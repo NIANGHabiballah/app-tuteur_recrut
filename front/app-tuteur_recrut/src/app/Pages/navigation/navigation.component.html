@@ -4,14 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recrutement de Tuteurs</title>
-</head>
-<body>
-        <div class="menu">
-          <button routerLink="/accueil" routerLinkActive="active">Accueil</button>
-          <button routerLink="/mes-candidatures" routerLinkActive="active">Mes Candidatures</button>
-          <button routerLink="/mon-dossier" routerLinkActive="active">Mon Dossier</button>
-          <button><a href="/logout">Se Déconnecter</a></button>
-        </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>        
+        <body class="bg-white">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <!-- Logo -->
+              <a class="navbar-brand" routerLink="/accueil">
+                <img src="images/unchk.png"
+                     alt="Logo" width="80" height="80" class="d-inline-block align-top rounded" style="border-radius: 15px;">
+              </a>
+              
+              <!-- Bouton du menu en mode mobile -->
+              <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon text-primary"></span>
+              </button>
+          
+              <!-- Liens de navigation -->
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto"> <!-- ms-auto pousse les liens à droite -->
+                  <li class="nav-item">
+                    <a class="nav-link text-primary" routerLink="/accueil" routerLinkActive="active">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-primary" routerLink="/mes-candidatures" routerLinkActive="active">Mes Candidatures</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-primary" routerLink="/mon-dossier" routerLinkActive="active">Mon Dossier</a>
+                  </li>
+                </ul>
+                <!-- Bouton Se Déconnecter -->
+                <button class="btn btn-danger ms-3"><a href="/logout"  routerLink="/connexion">Se Déconnecter</a></button>
+              </div>
+            </div>
+          </nav>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <router-outlet></router-outlet>
 </body>
 </html>

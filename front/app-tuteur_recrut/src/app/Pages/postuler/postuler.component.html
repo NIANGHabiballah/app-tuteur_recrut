@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <app-navigation></app-navigation>
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h3 class="fw-bold">Recrutement de personnels d’enseignement et de recherche</h3>
+    <h5 class="text-primary">Intitulé du poste: Enseignant chercheur en Géographie</h5>
+
+    <div class="d-flex flex-column align-items-start">
+      <div *ngFor="let s of [1,2,3,4,5]; let i = index" class="d-flex align-items-center my-2">
+        <span class="badge rounded-circle me-2" [class.bg-success]="step >= s" [class.bg-secondary]="step < s">{{ s }}</span>
+        <span [class.fw-bold]="step === s">
+          {{ ['Informations personnelles', 'Formations', 'Expériences Professionnelles', 'Documents', 'Terminé'][i] }}
+        </span>
+      </div>
+    </div>
+
+    <form [formGroup]="postulerForm" (ngSubmit)="soumettre()">
+      <div *ngIf="step === 1">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Prénom(s)</label>
+            <input type="text" class="form-control" formControlName="prenom">
+          </div>
+          <div class="col-md-6">
+            <label>Nom</label>
+            <input type="text" class="form-control" formControlName="nom">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label>Téléphone</label>
+            <input type="text" class="form-control" formControlName="telephone">
+          </div>
+          <div class="col-md-6">
+            <label>Téléphone secondaire</label>
+            <input type="text" class="form-control" formControlName="telephoneSecondaire">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="col-md-6">
+            <label>Nationalité</label>
+            <select class="form-control" formControlName="nationalite">
+              <option>Sénégalaise</option>
+              <option>Française</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label>Pays de résidence</label>
+            <select class="form-control" formControlName="paysResidence">
+              <option>Sénégal</option>
+              <option>France</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label>Ville de résidence</label>
+            <input type="text" class="form-control" formControlName="villeResidence">
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <label>Adresse</label>
+          <textarea class="form-control" formControlName="adresse"></textarea>
+        </div>
+      </div>
+
+      <div *ngIf="step === 5">
+        <p class="text-success text-center">Veillez cliquer sur le boutton <span class="fw-bold"> Soumettre</span> pour valider votre candidature.</p>
+      </div>
+
+
+
+      <div *ngIf="step === 2">
+        <h4 class="text-primary">Formations</h4>
+
+        <div formArrayName="formations">
+          <div *ngFor="let formation of formations.controls; let i = index" [formGroupName]="i" class="card p-3 mb-3">
+            <div class="row">
+              <div class="col-md-4">
+                <label>Diplôme</label>
+                <input type="text" class="form-control" formControlName="diplome">
+              </div>
+              <div class="col-md-4">
+                <label>Établissement</label>
+                <input type="text" class="form-control" formControlName="etablissement">
+              </div>
+              <div class="col-md-3">
+                <label>Année d'obtention</label>
+                <input type="number" class="form-control" formControlName="anneeObtention">
+              </div>
+              <div class="col-md-1 d-flex align-items-end">
+                <button type="button" class="btn btn-danger" (click)="supprimerFormation(i)" *ngIf="formations.length > 1">❌</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-outline-primary mt-3" (click)="ajouterFormation()">➕ Ajouter une formation</button>
+      </div>
+
+      <div *ngIf="step === 3">
+        <h4 class="text-primary">Expériences Professionnelles</h4>
+
+        <div formArrayName="experiences">
+          <div *ngFor="let experience of experiences.controls; let i = index" [formGroupName]="i" class="card p-3 mb-3">
+            <div class="row">
+              <div class="col-md-4">
+                <label>Poste</label>
+                <input type="text" class="form-control" formControlName="poste">
+              </div>
+              <div class="col-md-4">
+                <label>Université</label>
+                <input type="text" class="form-control" formControlName="entreprise">
+              </div>
+              <div class="col-md-3">
+                <label>Date de début</label>
+                <input type="date" class="form-control" formControlName="dateDebut">
+              </div>
+              <div class="col-md-3">
+                <label>Date de fin (optionnel)</label>
+                <input type="date" class="form-control" formControlName="dateFin">
+              </div>
+              <div class="col-md-12 mt-2">
+                <label>Description</label>
+                <textarea class="form-control" formControlName="description"></textarea>
+              </div>
+              <div class="col-md-1 d-flex align-items-end">
+                <button type="button" class="btn btn-danger" (click)="supprimerExperience(i)" *ngIf="experiences.length > 1">❌</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-outline-primary mt-3" (click)="ajouterExperience()">➕ Ajouter une expérience</button>
+      </div>
+
+      <div *ngIf="step === 4">
+        <h4 class="text-primary">Documents Requis</h4>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label>Curriculum Vitae (CV)</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event, 'cv')">
+            <button *ngIf="postulerForm.get('documents.cv')?.value" class="btn btn-outline-success mt-2" (click)="telechargerDocument('cv')">
+              📥 Télécharger CV
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <label>Lettre de Motivation</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event, 'lettreMotivation')">
+            <button *ngIf="postulerForm.get('documents.lettreMotivation')?.value" class="btn btn-outline-success mt-2" (click)="telechargerDocument('lettreMotivation')">
+              📥 Télécharger Lettre de Motivation
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <label>Diplôme</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event, 'diplome')">
+            <button *ngIf="postulerForm.get('documents.diplome')?.value" class="btn btn-outline-success mt-2" (click)="telechargerDocument('diplome')">
+              📥 Télécharger Diplôme
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" (click)="precedent()" [disabled]="step === 1">Précédent</button>
+        <button type="button" class="btn btn-primary" (click)="suivant()" *ngIf="step < 5">Suivant</button>
+        <button type="submit" class="btn btn-success" *ngIf="step === 5">Soumettre</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<app-footer></app-footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+.btn-close{
+    color: red;
+  }
+  .btn-close:hover{
+    color: red;
+  }
+  
+  .container{
+    padding: 50px;
+  }
+
+  .container .row{
+    margin-bottom: 10px;
+  }

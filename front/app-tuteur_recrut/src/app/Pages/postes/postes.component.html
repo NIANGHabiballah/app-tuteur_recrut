@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <app-navigation></app-navigation>
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+
+<div class="container mt-4">
+    <h4 class="fw-bold">Pôle: Sciences Techniques Numériques - STN </h4>
+  
+    <div class="row mt-3">
+      <!-- Carte de poste -->
+      <div class="col-md-4" *ngFor="let poste of postes">
+        <div class="card p-3 shadow-sm">
+          <div class="card-body">
+            <span class="badge bg-primary">{{ poste.titre }}</span>
+            <div class="mt-2">
+              <span class="badge bg-success">{{ poste.niveau }}</span><br>
+              <span class="badge bg-info text-dark">{{ poste.specialite }}</span>
+            </div>
+            <p class="mt-2">
+              <strong>Date de clôture : </strong>
+              <span class="badge bg-warning text-dark">{{ poste.dateCloture }}</span>
+            </p>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-outline-secondary" (click)="openModal()">Voir les détails</button>
+              <button class="btn btn-outline-success" routerLink="/postuler">Postuler</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Fenêtre modale -->
+  <div class="modal fade" id="offreModal" tabindex="-1" aria-labelledby="offreModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="offreModalLabel">Détails de l'offre de recrutement</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <h3>1. NIVEAUX DE QUALIFICATION</h3>
+          <p>Les candidats doivent être titulaires au minimum d’un Master II...</p>
+  
+          <h3>2. CATEGORIES & CHARGES STATUTAIRES</h3>
+          <p>Il est institué trois catégories de tuteurs...</p>
+  
+          <h4>CATÉGORIES STATUTAIRES</h4>
+          <ul>
+            <li><strong>Catégorie 1 :</strong> Équivalent Temps Plein (ETP)</li>
+            <li><strong>Catégorie 2 :</strong> 50% ETP</li>
+            <li><strong>Catégorie 3 :</strong> 33% ETP</li>
+          </ul>
+  
+          <h4>Critères d’éligibilité</h4>
+          <ul>
+            <li><strong>Catégorie 1 :</strong> Etre disponible à plein temps...</li>
+            <li><strong>Catégorie 2 :</strong> Ne pas exercer d’activité...</li>
+            <li><strong>Catégorie 3 :</strong> Éligible à tous...</li>
+          </ul>
+  
+          <h4>Rémunérations mensuelles</h4>
+          <ul>
+            <li><strong>Catégorie 1 :</strong> 302.500 F CFA</li>
+            <li><strong>Catégorie 2 :</strong> 151.250 F CFA</li>
+            <li><strong>Catégorie 3 :</strong> 100.833 F CFA</li>
+          </ul>
+  
+          <h3>3. CONDITIONS DE DEPOT DES DOSSIERS</h3>
+          <p>Les dossiers doivent être soumis entre le 01 février et le 30 mars 2025</p>
+  
+          <h3>4. Documents requis</h3>
+          <ul>
+            <li>CV</li>
+            <li>Lettre de motivation</li>
+            <li>Diplômes</li>
+          </ul>
+  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+<app-footer></app-footer>
+</body>
+</html>

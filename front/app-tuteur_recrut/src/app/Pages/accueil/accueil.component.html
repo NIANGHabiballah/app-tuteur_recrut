@@ -1,33 +1,57 @@
-<app-navigation></app-navigation>
-<div>
-  <router-outlet></router-outlet>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recrutement de Tuteurs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+  <app-navigation></app-navigation>
 
-<!-- Banniere -->
-<div class="banner">
-  <img src="images/bagn1.jpg" alt="Bannière">
-</div>
 
-<div class="title-container">
-  <h1 class="main-title">ESPACE DE RECRUTEMENT</h1>
-</div>
+<section class="header">
+<img src="images/bagn1.jpg" alt="">
+</section>
 
-<div class="card-container">
-  <div *ngFor="let offre of offres; let i = index" class="card-row">
-    <mat-card class="example-card" appearance="outlined">
-      <img mat-card-image [src]="'images/img' + (i + 1) + '.jpg'" alt="Image de l'offre">
-      <mat-card-content>
-        <p>{{ offre.titre }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button *ngIf="offre.postes === 0" mat-button class="no-postes-button">Aucun poste</button>
-        <ng-container *ngIf="offre.postes > 0">
-          <button mat-button class="postuler-button" (click)="openPopup(offre.id)">Postuler</button>
-          <button mat-button class="details-button" (click)="openDetailsPopup(offre)">Voir les détails</button>
-        </ng-container>
-      </mat-card-actions>
-    </mat-card>
+<section class=" bg-white text-center py-5 text-white">
+  <h2 class="display-4 text-success"><span>Rejoignez l'</span>UNCHK</h2>
+  <p class="lead fw-bold">Aidez les étudiants à réussir tout en développant votre carrière.</p>
+  <a routerLink="/postes" class="btn btn-light btn-lg mt-3 bg-success text-white">Voir les postes</a>
+</section>
+
+<section id="services" class="py-5 container text-center bg-white">
+  <h3 class="mb-4">Pourquoi nous rejoindre ?</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h4 class="text-primary">Flexibilité</h4>
+        <p>Travaillez selon votre propre emploi du temps.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h4 class="text-primary">Rémunération attractive</h4>
+        <p>Recevez une rémunération compétitive pour votre expertise.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-4 shadow-sm">
+        <h4 class="text-primary">Impact</h4>
+        <p>Aidez les étudiants à atteindre leurs objectifs académiques.</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+
 
 <app-footer></app-footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

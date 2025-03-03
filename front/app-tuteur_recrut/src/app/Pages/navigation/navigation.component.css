@@ -8,40 +8,49 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.menu {
+.navbar{
     display: flex;
-    justify-content: space-around;
-    background-color: #f0f0f0;
-    width: 100%;
-    box-sizing: border-box; /* Inclure le padding dans la largeur */
-    margin-bottom: 10px !important; /* Supprimer les marges */
-    box-shadow: 0 4px 2px -2px rgb(210, 210, 210); /* Ajouter une ombre sous le menu */
-    position: fixed; /* Fixer le menu en haut */
     top: 0; /* Positionner en haut */
     z-index: 1000; /* Assurer que le menu reste au-dessus des autres éléments */
+    box-shadow: 0 4px 2px -2px rgb(241, 239, 239); /* Ajouter une ombre sous le menu */
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
 }
 
-.menu button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex-grow: 1;
-    text-align: center;
+.menu {
+    /* display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    width: 100%; */
+   /* box-sizing: border-box; /* Inclure le padding dans la largeur */
+   /* margin-bottom: 10px !important; /* Supprimer les marges */
+    /*box-shadow: 0 4px 2px -2px rgb(210, 210, 210); /* Ajouter une ombre sous le menu */
+    /*position: fixed; /* Fixer le menu en haut */
+   /* top: 0; /* Positionner en haut */
+    /*z-index: 1000; /* Assurer que le menu reste au-dessus des autres éléments */
 }
 
-.menu button:hover {
-    background-color: #28a745;
+
+ul li a.active {
+    color: green !important;
 }
 
-.menu button.active {
-    background-color: #28a745;
-}
-
-.menu button a {
+.btn a {
     color: white;
     text-decoration: none;
 }
+
+ul li a{
+    text-decoration: none;
+  }
+
+ul li a:hover{
+    cursor: pointer;
+    color: green !important;
+}
+  
+ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16pX;
+}
+  

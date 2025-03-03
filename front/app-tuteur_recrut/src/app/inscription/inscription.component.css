@@ -1,0 +1,40 @@
+.navbar{
+  display: flex;
+  top: 0; /* Positionner en haut */
+  z-index: 1000; /* Assurer que le menu reste au-dessus des autres éléments */
+  box-shadow: 0 4px 2px -2px rgb(241, 239, 239); /* Ajouter une ombre sous le menu */
+  box-sizing: border-box; /* Inclure le padding dans la largeur */
+}
+
+a{
+    text-decoration: none;
+    font-size: 20px !important;
+  }
+  a:hover{
+    cursor: pointer;
+    color: green;
+  }
+  
+  ul li a {
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: Helvetica;
+  }
+
+  .mt-3 a:hover{
+    color: #0d6efd !important;
+  }
+  
+  .container label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .container .col-md-6 h2{
+    font-weight: bold;
+    color: green !important;
+  }

@@ -6,25 +6,75 @@
     <title>Connexion</title>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Connexion</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <label for="email">Email <span class="required">*</span></label>
-          <input type="email" id="email" formControlName="email" placeholder="Entrez votre email">
-          <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="error">
-            Email invalide
-          </div>
-          
-          <label for="password">Mot de passe <span class="required">*</span></label>
-          <input type="password" id="password" formControlName="password" placeholder="Entrez votre mot de passe">
-          <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="error">
-            Mot de passe requis (min 6 caractères)
-          </div>
-          
-          <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
-        </form>
-        <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+    <!-- MENU NAVIGATION -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="images/unchk.png"
+           alt="Logo" width="80" height="80" class="d-inline-block align-top rounded" style="border-radius: 15px;">
+    </a>
+
+
+
+    <!-- Bouton du menu en mode mobile -->
+    <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon text-primary"></span>
+    </button>
+
+    <!-- Liens de navigation -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="ms-auto">
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold fs-4 text-uppercase" href="#">
+          Université Numérique <br> Cheikh Hamidou Kane
+        </a>
       </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow p-4">
+        <h2 class="text-center mb-4">CONEXION</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (submit)="loginForm">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email *</label>
+              <input id="email" type="email" class="form-control" formControlName="email" required placeholder="Entrez votre email"/>
+              <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+                Email invalide.
+              </div>
+            </div>
+          <div class="mb-3">
+            <label for="motDePasse" class="form-label">Mot de passe *</label>
+            <input id="motDePasse" type="password" class="form-control" formControlName="motDePasse" required placeholder="Entrez votre mot de passe" />
+            <div *ngIf="loginForm.get('motDePasse')?.invalid && loginForm.get('motDePasse')?.touched" class="text-danger">
+              Le mot de passe doit contenir au moins 6 caractères.
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100" [disabled]="loginForm.invalid">
+            Se connecter
+          </button>
+        </form>
+
+          <!-- Lien de mot de passe oublié -->
+          <div class="mt-3 text-center">
+            <a routerLink="/mot-de-passe-oublie" class="text-danger">Mot de passe oublié ?</a>
+          </div>
+          
+        <!-- Lien d'inscription -->
+        <div class="mt-3 text-center">
+          <p>Vous n'avez pas de compte ?
+            <a routerLink="/inscription" class="text-success">S'inscrire ici</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       
 </body>
 </html>
