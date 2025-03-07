@@ -1,31 +1,57 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import {Router, RouterLink, RouterModule} from '@angular/router';
+import { TokenStorageService } from '../services/token-storage.service';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NavigationComponent } from "../Pages/navigation/navigation.component";
 
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
   styleUrls: ['./connexion.component.css'],
   standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, RouterLink, NavigationComponent] // 🔥 Ajout de ReactiveFormsModule ici
- // 🔥 Ajout de ReactiveFormsModule ici
+  imports: [CommonModule, ReactiveFormsModule, RouterLink]
 })
-export class ConnexionComponent {
+export class ConnexionComponent implements OnInit {
   loginForm: FormGroup;
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      motDePasse: ['', [Validators.required, Validators.minLength(6)]]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
-  onSubmit() {
+  ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+    }
+  }
+
+  onSubmit(): void {
     if (this.loginForm.valid) {
-      console.log('Formulaire soumis', this.loginForm.value);
+      this.authService.login(this.loginForm.value).subscribe({
+        next: data => {
+          this.tokenStorage.saveToken(data.accessToken);
+          this.tokenStorage.saveUser(data);
+
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.router.navigate(['/accueil']);
+        },
+        error: err => {
+          this.errorMessage = err.error.message;
+          this.isLoginFailed = true;
+        }
+      });
     }
   }
 }

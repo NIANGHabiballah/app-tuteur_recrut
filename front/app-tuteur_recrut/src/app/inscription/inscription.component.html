@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Inscription</title>
 </head>
 <body>
   <!-- MENU NAVIGATION -->
@@ -14,8 +14,6 @@
       <img src="images/unchk.png"
            alt="Logo" width="80" height="80" class="d-inline-block align-top rounded" style="border-radius: 15px;">
     </a>
-
-
 
     <!-- Bouton du menu en mode mobile -->
     <button class="navbar-toggler text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -34,28 +32,19 @@
   </div>
 </nav>
 
-
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
+      <div class="card shadow p-4">
       <h2 class="text-center mb-4" style="font-weight: bold;">CREATION DE COMPTE</h2>
 
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" (submit)="inscription()">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-        <!-- Prénom -->
+        <!-- Nom d'utilisateur -->
         <div class="mb-3">
-          <label for="prenom" class="form-label">Prénom *</label>
-          <input id="prenom" type="text" class="form-control" formControlName="prenom" placeholder="Entrer votre prénom">
-          <small class="text-danger" *ngIf="registerForm.controls['prenom'].invalid && registerForm.controls['prenom'].touched">
-            Ce champ est obligatoire.
-          </small>
-        </div>
-
-        <!-- Nom -->
-        <div class="mb-3">
-          <label for="nom" class="form-label">Nom *</label>
-          <input id="nom" type="text" class="form-control" formControlName="nom" placeholder="Entrer votre nom">
-          <small class="text-danger" *ngIf="registerForm.controls['nom'].invalid && registerForm.controls['nom'].touched">
+          <label for="username" class="form-label">Nom d'utilisateur *</label>
+          <input id="username" type="text" class="form-control" formControlName="username" placeholder="Entrer votre nom d'utilisateur">
+          <small class="text-danger" *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
             Ce champ est obligatoire.
           </small>
         </div>
@@ -71,16 +60,24 @@
 
         <!-- Mot de passe -->
         <div class="mb-3">
-          <label for="motDePasse" class="form-label">Mot de passe *</label>
-          <input id="motDePasse" type="password" class="form-control" formControlName="motDePasse" placeholder="Entrer votre mot de passe">
-          <small class="text-danger" *ngIf="registerForm.controls['motDePasse'].invalid && registerForm.controls['motDePasse'].touched">
+          <label for="password" class="form-label">Mot de passe *</label>
+          <input id="password" type="password" class="form-control" formControlName="password" placeholder="Entrer votre mot de passe">
+          <small class="text-danger" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
             Le mot de passe doit contenir au moins 6 caractères.
           </small>
         </div>
 
-        <!-- Bouton S'inscrire -->
+       <!-- Rôle -->
+       <div class="mb-3">
+        <label for="role" class="form-label">Rôle</label>
+        <select id="role" class="form-select" formControlName="role">
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+      </div>
+
+       <!-- Bouton S'inscrire -->
         <div class="d-grid">
-          <button (click)="inscription()" type="submit" class="btn btn-success w-100" [disabled]="registerForm.invalid">S'inscrire</button>
+          <button type="submit" class="btn btn-success w-100" [disabled]="registerForm.invalid">S'inscrire</button>
         </div>
       </form>
 
@@ -90,6 +87,7 @@
           <a routerLink="/connexion" class="text-success">Se connecter</a>
         </p>
       </div>
+    </div>
     </div>
   </div>
 </div>
